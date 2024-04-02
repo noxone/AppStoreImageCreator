@@ -71,3 +71,10 @@ xcuserdata/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode,visualstudiocode
+
+/temp
+/other/~*
+*.dmg
+*.zip
+/other/bezels/
+

@@ -7,15 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C515A7B32BB96AF10007630E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C54D80072BB875DE00D5DEB0 /* Assets.xcassets */; };
+		C515A7B62BB971A90007630E /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C515A7B52BB971A90007630E /* TestView.swift */; };
 		C54D80042BB875DD00D5DEB0 /* AppStoreImageCreatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D80032BB875DD00D5DEB0 /* AppStoreImageCreatorApp.swift */; };
 		C54D80062BB875DD00D5DEB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D80052BB875DD00D5DEB0 /* ContentView.swift */; };
-		C54D80082BB875DE00D5DEB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C54D80072BB875DE00D5DEB0 /* Assets.xcassets */; };
 		C54D800C2BB875DE00D5DEB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C54D800B2BB875DE00D5DEB0 /* Preview Assets.xcassets */; };
 		C54D80162BB875DF00D5DEB0 /* AppStoreImageCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D80152BB875DF00D5DEB0 /* AppStoreImageCreatorTests.swift */; };
 		C54D80202BB875DF00D5DEB0 /* AppStoreImageCreatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D801F2BB875DF00D5DEB0 /* AppStoreImageCreatorUITests.swift */; };
 		C54D80222BB875DF00D5DEB0 /* AppStoreImageCreatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D80212BB875DF00D5DEB0 /* AppStoreImageCreatorUITestsLaunchTests.swift */; };
+		C5C2D1DD2BB9D97300E13BC2 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1DC2BB9D97300E13BC2 /* ImageCache.swift */; };
+		C5C2D1DF2BBB1E0F00E13BC2 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1DE2BBB1E0F00E13BC2 /* Renderable.swift */; };
+		C5C2D1E12BBB3B4E00E13BC2 /* SwiftUI+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1E02BBB3B4E00E13BC2 /* SwiftUI+CGImage.swift */; };
+		C5C2D1E32BBBEE8900E13BC2 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1E22BBBEE8900E13BC2 /* ApplicationModel.swift */; };
+		C5C2D1E62BBC001D00E13BC2 /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1E52BBC001D00E13BC2 /* Elements.swift */; };
 		C5C4A6CB2BB8761500AAB9B0 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6CA2BB8761500AAB9B0 /* ProjectModel.swift */; };
 		C5C4A6CD2BB8767400AAB9B0 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6CC2BB8767400AAB9B0 /* Graphics.swift */; };
+		C5C4A6D02BB8797D00AAB9B0 /* ImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6CF2BB8797D00AAB9B0 /* ImageRenderer.swift */; };
+		C5C4A6D22BB8799D00AAB9B0 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6D12BB8799D00AAB9B0 /* Device.swift */; };
+		C5C4A6D42BB89EFB00AAB9B0 /* ImageRendererTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6D32BB89EFB00AAB9B0 /* ImageRendererTest.swift */; };
+		C5C4A6DA2BB8A27700AAB9B0 /* SwiftImageReadWrite in Frameworks */ = {isa = PBXBuildFile; productRef = C5C4A6D92BB8A27700AAB9B0 /* SwiftImageReadWrite */; };
+		C5C4A6DC2BB93B8100AAB9B0 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C4A6DB2BB93B8100AAB9B0 /* TestAssets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C515A7B52BB971A90007630E /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		C54D80002BB875DD00D5DEB0 /* AppStoreImageCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreImageCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54D80032BB875DD00D5DEB0 /* AppStoreImageCreatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreImageCreatorApp.swift; sourceTree = "<group>"; };
 		C54D80052BB875DD00D5DEB0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,8 +59,17 @@
 		C54D801B2BB875DF00D5DEB0 /* AppStoreImageCreatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreImageCreatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54D801F2BB875DF00D5DEB0 /* AppStoreImageCreatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreImageCreatorUITests.swift; sourceTree = "<group>"; };
 		C54D80212BB875DF00D5DEB0 /* AppStoreImageCreatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreImageCreatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C5C2D1DC2BB9D97300E13BC2 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		C5C2D1DE2BBB1E0F00E13BC2 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		C5C2D1E02BBB3B4E00E13BC2 /* SwiftUI+CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+CGImage.swift"; sourceTree = "<group>"; };
+		C5C2D1E22BBBEE8900E13BC2 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
+		C5C2D1E52BBC001D00E13BC2 /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
 		C5C4A6CA2BB8761500AAB9B0 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		C5C4A6CC2BB8767400AAB9B0 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
+		C5C4A6CF2BB8797D00AAB9B0 /* ImageRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderer.swift; sourceTree = "<group>"; };
+		C5C4A6D12BB8799D00AAB9B0 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		C5C4A6D32BB89EFB00AAB9B0 /* ImageRendererTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRendererTest.swift; sourceTree = "<group>"; };
+		C5C4A6DB2BB93B8100AAB9B0 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C4A6DA2BB8A27700AAB9B0 /* SwiftImageReadWrite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C515A7B42BB971920007630E /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C515A7B52BB971A90007630E /* TestView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		C54D7FF72BB875DD00D5DEB0 = {
 			isa = PBXGroup;
 			children = (
@@ -101,8 +131,9 @@
 			children = (
 				C54D80032BB875DD00D5DEB0 /* AppStoreImageCreatorApp.swift */,
 				C54D80052BB875DD00D5DEB0 /* ContentView.swift */,
-				C54D80072BB875DE00D5DEB0 /* Assets.xcassets */,
+				C515A7B42BB971920007630E /* views */,
 				C5C4A6C92BB8760100AAB9B0 /* model */,
+				C54D80072BB875DE00D5DEB0 /* Assets.xcassets */,
 				C54D80092BB875DE00D5DEB0 /* AppStoreImageCreator.entitlements */,
 				C54D800A2BB875DE00D5DEB0 /* Preview Content */,
 			);
@@ -121,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				C54D80152BB875DF00D5DEB0 /* AppStoreImageCreatorTests.swift */,
+				C5C4A6D32BB89EFB00AAB9B0 /* ImageRendererTest.swift */,
+				C5C4A6DB2BB93B8100AAB9B0 /* TestAssets.xcassets */,
 			);
 			path = AppStoreImageCreatorTests;
 			sourceTree = "<group>";
@@ -134,11 +167,33 @@
 			path = AppStoreImageCreatorUITests;
 			sourceTree = "<group>";
 		};
+		C5C2D1E42BBBF03900E13BC2 /* project */ = {
+			isa = PBXGroup;
+			children = (
+				C5C4A6CA2BB8761500AAB9B0 /* ProjectModel.swift */,
+			);
+			path = project;
+			sourceTree = "<group>";
+		};
+		C5C2D1E72BBC003200E13BC2 /* rendering */ = {
+			isa = PBXGroup;
+			children = (
+				C5C4A6CF2BB8797D00AAB9B0 /* ImageRenderer.swift */,
+				C5C2D1DC2BB9D97300E13BC2 /* ImageCache.swift */,
+				C5C2D1DE2BBB1E0F00E13BC2 /* Renderable.swift */,
+				C5C2D1E02BBB3B4E00E13BC2 /* SwiftUI+CGImage.swift */,
+			);
+			path = rendering;
+			sourceTree = "<group>";
+		};
 		C5C4A6C92BB8760100AAB9B0 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C5C2D1E42BBBF03900E13BC2 /* project */,
 				C5C4A6CE2BB8767800AAB9B0 /* graphics */,
-				C5C4A6CA2BB8761500AAB9B0 /* ProjectModel.swift */,
+				C5C2D1E72BBC003200E13BC2 /* rendering */,
+				C5C2D1E22BBBEE8900E13BC2 /* ApplicationModel.swift */,
+				C5C4A6D12BB8799D00AAB9B0 /* Device.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -147,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C4A6CC2BB8767400AAB9B0 /* Graphics.swift */,
+				C5C2D1E52BBC001D00E13BC2 /* Elements.swift */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
@@ -167,6 +223,9 @@
 			dependencies = (
 			);
 			name = AppStoreImageCreator;
+			packageProductDependencies = (
+				C5C4A6D92BB8A27700AAB9B0 /* SwiftImageReadWrite */,
+			);
 			productName = AppStoreImageCreator;
 			productReference = C54D80002BB875DD00D5DEB0 /* AppStoreImageCreator.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +298,9 @@
 				Base,
 			);
 			mainGroup = C54D7FF72BB875DD00D5DEB0;
+			packageReferences = (
+				C5C4A6D82BB8A27700AAB9B0 /* XCRemoteSwiftPackageReference "SwiftImageReadWrite" */,
+			);
 			productRefGroup = C54D80012BB875DD00D5DEB0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -255,8 +317,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C515A7B32BB96AF10007630E /* Assets.xcassets in Resources */,
 				C54D800C2BB875DE00D5DEB0 /* Preview Assets.xcassets in Resources */,
-				C54D80082BB875DE00D5DEB0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C4A6DC2BB93B8100AAB9B0 /* TestAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,10 +344,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C515A7B62BB971A90007630E /* TestView.swift in Sources */,
 				C54D80062BB875DD00D5DEB0 /* ContentView.swift in Sources */,
+				C5C2D1E62BBC001D00E13BC2 /* Elements.swift in Sources */,
+				C5C2D1DD2BB9D97300E13BC2 /* ImageCache.swift in Sources */,
+				C5C2D1DF2BBB1E0F00E13BC2 /* Renderable.swift in Sources */,
 				C54D80042BB875DD00D5DEB0 /* AppStoreImageCreatorApp.swift in Sources */,
+				C5C2D1E12BBB3B4E00E13BC2 /* SwiftUI+CGImage.swift in Sources */,
 				C5C4A6CD2BB8767400AAB9B0 /* Graphics.swift in Sources */,
+				C5C2D1E32BBBEE8900E13BC2 /* ApplicationModel.swift in Sources */,
 				C5C4A6CB2BB8761500AAB9B0 /* ProjectModel.swift in Sources */,
+				C5C4A6D02BB8797D00AAB9B0 /* ImageRenderer.swift in Sources */,
+				C5C4A6D22BB8799D00AAB9B0 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C4A6D42BB89EFB00AAB9B0 /* ImageRendererTest.swift in Sources */,
 				C54D80162BB875DF00D5DEB0 /* AppStoreImageCreatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,6 +713,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C5C4A6D82BB8A27700AAB9B0 /* XCRemoteSwiftPackageReference "SwiftImageReadWrite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/SwiftImageReadWrite";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C5C4A6D92BB8A27700AAB9B0 /* SwiftImageReadWrite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5C4A6D82BB8A27700AAB9B0 /* XCRemoteSwiftPackageReference "SwiftImageReadWrite" */;
+			productName = SwiftImageReadWrite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C54D7FF82BB875DD00D5DEB0 /* Project object */;
 }

@@ -7,6 +7,8 @@
 
 import XCTest
 
+@testable import AppStoreImageCreator
+
 final class AppStoreImageCreatorTests: XCTestCase {
 
     override func setUpWithError() throws {

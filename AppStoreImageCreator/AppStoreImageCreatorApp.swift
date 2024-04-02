@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct AppStoreImageCreatorApp: App {
+    let model = ApplicationModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            // ContentView()
+            TestView()
+                .environmentObject(model)
         }
     }
 }

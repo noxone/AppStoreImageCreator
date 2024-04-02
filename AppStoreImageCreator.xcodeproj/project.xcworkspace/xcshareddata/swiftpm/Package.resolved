@@ -1,0 +1,15 @@
+{
+  "originHash" : "a45a6edd14271c10b678b2df46d8aad96e29e4b68e6f758bc736e1f38cf813ee",
+  "pins" : [
+    {
+      "identity" : "swiftimagereadwrite",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dagronf/SwiftImageReadWrite",
+      "state" : {
+        "revision" : "96361ba7f9dce5184d95aba8ea90d9faa4acabb2",
+        "version" : "1.6.1"
+      }
+    }
+  ],
+  "version" : 3
+}
