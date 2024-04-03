@@ -171,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C4A6CA2BB8761500AAB9B0 /* ProjectModel.swift */,
+				C5C4A6D12BB8799D00AAB9B0 /* Device.swift */,
 			);
 			path = project;
 			sourceTree = "<group>";
@@ -189,11 +190,10 @@
 		C5C4A6C92BB8760100AAB9B0 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C5C2D1E22BBBEE8900E13BC2 /* ApplicationModel.swift */,
 				C5C2D1E42BBBF03900E13BC2 /* project */,
 				C5C4A6CE2BB8767800AAB9B0 /* graphics */,
 				C5C2D1E72BBC003200E13BC2 /* rendering */,
-				C5C2D1E22BBBEE8900E13BC2 /* ApplicationModel.swift */,
-				C5C4A6D12BB8799D00AAB9B0 /* Device.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";

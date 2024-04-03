@@ -7,19 +7,19 @@
 
 import Foundation
 
+typealias AppStoreImageId = Int
+typealias ScreenshotId = UUID
+typealias ImageFileId = UUID
+
 struct AppStoreProject {
     let createdOn: Date = Date.now
     let name: String
     let background: Renderable & Background
     let images: [AppStoreImage]
     let activeDevices: [Device]
+    let imagesFiles: [ImageFile]
+    let screenshots: [Screenshot]
 }
-
-struct Screenshot {
-    let id: UUID
-}
-
-typealias AppStoreImageId = Int
 
 struct AppStoreImage {
     private static var currentId = 0
@@ -29,6 +29,15 @@ struct AppStoreImage {
     let elements: [Renderable]
 }
 
+struct Screenshot {
+    let id: ScreenshotId
+    let images: [Device:ImageFileId]
+}
+
+struct ImageFile {
+    let id: ImageFileId
+    let originalFilename: String?
+}
 
 extension AppStoreProject {
     private static var creationCounter = 1
@@ -43,7 +52,9 @@ extension AppStoreProject {
                     TextElement(color: Color(blue: 1.0), fontName: "Helvetica", fontSize: 36, text: "This is a first test!", position: CGPoint(x: 0.5, y: 0.5), underline: true, rotationAngle: 0.0)
                 ])
             ],
-            activeDevices: [.iPhone16_2]
+            activeDevices: [.iPhone16_2],
+            imagesFiles: [],
+            screenshots: []
         )
     }
 }

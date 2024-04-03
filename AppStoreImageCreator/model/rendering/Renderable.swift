@@ -52,6 +52,7 @@ extension TextElement : Renderable {
         filter.scaleFactor = 1.0
         let textImage = filter.outputImage!
         
+        //https://stackoverflow.com/questions/8275882/one-step-affine-transform-for-rotation-around-a-point 
         // compute position
         let textImageExtent = textImage.extent
         let position = CGPoint(x: position.x * extent.width - textImageExtent.width * 0.5, y: (1.0 - position.y) * extent.height - textImageExtent.height * 0.5)
