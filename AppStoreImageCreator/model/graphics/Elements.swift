@@ -26,6 +26,10 @@ struct TextElement {
     let rotationAngle: CGFloat
 }
 
-struct ImageElement {
-    let imageName: String
+struct ImageFileElement {
+    let imageId: ImageFileId
+    let scaleX: CGFloat
+    let scaleY: CGFloat
+    let position: CGPoint
+    let rotationAngle: CGFloat
 }

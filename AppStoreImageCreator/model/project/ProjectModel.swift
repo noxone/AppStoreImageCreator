@@ -43,18 +43,29 @@ extension AppStoreProject {
     private static var creationCounter = 1
     static func createNewProject() -> AppStoreProject {
         let name = "Project #\(creationCounter)"
+        
+        let id1 = ImageFileId()
+        
         creationCounter += 1
         return AppStoreProject(
             name: name,
             background: BackgroundColor(color: .init(red: 1, green: 1, blue: 1, alpha: 1)),
             images: [
-                AppStoreImage(id: UUID(), background: BackgroundColor(color: Color(green: 1)), elements: [
-                    TextElement(color: Color(blue: 1.0), fontName: "Helvetica", fontSize: 36, text: "This is a first test!", position: CGPoint(x: 0.5, y: 0.5), underline: true, rotationAngle: 0.0)
-                ])
+                AppStoreImage(
+                    id: UUID(),
+                    background: BackgroundColor(color: Color(green: 1)), 
+                    elements: [
+                        TextElement(color: Color(blue: 1.0), fontName: "Helvetica", fontSize: 36, text: "This is a first test!", position: CGPoint(x: 0.5, y: 0.1), underline: true, rotationAngle: 0.0),
+                        ImageFileElement(imageId: id1, scaleX: 0.2, scaleY: 0.2, position: CGPoint(x: 0.5, y: 0.65), rotationAngle: -10),
+                    ]
+                )
             ],
             activeDevices: [.iPhone16_2],
-            imagesFiles: [],
+            imagesFiles: [
+                ImageFile(id: id1, originalFilename: "test-lightscape")
+            ],
             screenshots: []
         )
     }
 }
+

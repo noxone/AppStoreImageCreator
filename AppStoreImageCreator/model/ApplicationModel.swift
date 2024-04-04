@@ -7,13 +7,14 @@
 
 import Foundation
 import CoreGraphics
+import SwiftImageReadWrite
 
 class ApplicationModel : ObservableObject {
     @Published var project: AppStoreProject
     
-    
     init() {
         self.project = AppStoreProject.createNewProject()
+        loadImage(imagefile: project.imagesFiles[0])
     }
     
     private func set(project: AppStoreProject) {
@@ -21,6 +22,13 @@ class ApplicationModel : ObservableObject {
     }
     
     func set(background: Background & Renderable) {
+    }
+    
+    func loadImage(imagefile: ImageFile) {
+        let id = imagefile.id
+        if let image = LoadedImage(withId: id, named: imagefile.originalFilename!) {
+            ImageCache.shared.putImage(image.cgImage, withId: id)
+        }
     }
     
     var currentImage: CGImage? {
@@ -32,8 +40,17 @@ class LoadedImage {
     let id: ImageFileId
     let cgImage: CGImage
     
-    init(withId id: ImageFileId, fromAsset name: String) {
+    init?(withId id: ImageFileId, named name: String) {
         self.id = id
-        
+        if let image = SwiftImageReadWrite.PlatformImage(named: name),
+           let cgImage = image.cgImage {
+            self.cgImage = cgImage
+        } else {
+            return nil
+        }
     }
+}
+
+enum AppStoreImageCreatorError : LocalizedError {
+    case unableToLoadImageFromAsset(name: String)
 }

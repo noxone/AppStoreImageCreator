@@ -32,6 +32,16 @@ class ImageCache {
         
         return nil
     }
+    
+    private var imageFiles = [ImageFileId: CGImage]()
+    
+    func putImage(_ image: CGImage, withId id: ImageFileId) {
+        imageFiles[id] = image
+    }
+    
+    func getImage(of id: ImageFileId) -> CGImage? {
+        return imageFiles[id]
+    }
 }
 
 fileprivate struct CacheKey : Equatable, Hashable {

@@ -75,3 +75,20 @@ extension TextElement : Renderable {
         return positionedTextImage.composited(over: image)
     }
 }
+
+extension ImageFileElement : Renderable {
+    func render(into image: CIImage, withExtent extent: CGRect) -> CIImage {
+        guard let imageToRender = ImageCache.shared.getImage(of: imageId) else {
+            return image
+        }
+        
+        let cgImageToRender = CIImage(cgImage: imageToRender)
+        let renderImageExtent = cgImageToRender.extent
+        return cgImageToRender
+            .transformed(by: CGAffineTransform(translationX: renderImageExtent.width * -0.5, y: renderImageExtent.height * -0.5))
+            .transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
+            .transformed(by: CGAffineTransform(rotationAngle: rotationAngle / 180.0 * Double.pi))
+            .transformed(by: CGAffineTransform(translationX: extent.width * position.x, y: extent.height * (1.0 - position.y)))
+            .composited(over: image)
+    }
+}
