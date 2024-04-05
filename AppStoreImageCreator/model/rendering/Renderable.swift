@@ -15,8 +15,29 @@ import AppKit
 import UIKit
 #endif
 
+#if os(macOS)
+typealias PlatformFont = NSFont
+#else
+typealias PlatformFont = UIFont
+#endif
+
+
 protocol Renderable {
-    func render(into image: CIImage, withExtent extent: CGRect) -> CIImage
+    func render(into baseImage: CIImage, withExtent extent: CGRect) -> CIImage
+}
+
+extension Renderable {
+    fileprivate func render(_ imageToRender: CIImage, over baseImage: CIImage, scaling scale: CGPoint, rotating rotationAngle: CGFloat, positionedAt position: CGPoint) -> CIImage {
+        let imageToRenderExtent = imageToRender.extent
+        let baseImageExtent = baseImage.extent
+        
+        return imageToRender
+            .transformed(by: CGAffineTransform(translationX: imageToRenderExtent.width * -0.5, y: imageToRenderExtent.height * -0.5))
+            .transformed(by: CGAffineTransform(scaleX: scale.x, y: scale.y))
+            .transformed(by: CGAffineTransform(rotationAngle: rotationAngle / 180.0 * Double.pi))
+            .transformed(by: CGAffineTransform(translationX: baseImageExtent.width * position.x, y: baseImageExtent.height * (1.0 - position.y)))
+            .composited(over: baseImage)
+    }
 }
 
 extension BackgroundColor : Renderable {
@@ -30,65 +51,51 @@ extension BackgroundColor : Renderable {
 }
 
 extension TextElement : Renderable {
-#if os(macOS)
-    private var font: NSFont { NSFont(name: fontName, size: CGFloat(fontSize))! }
-#else
-    private var font: UIFont { UIFont(name: fontName, size: CGFloat(fontSize))! }
-#endif
+    private var font: PlatformFont? { PlatformFont(name: fontName, size: CGFloat(fontSize)) }
     
-    // https://stackoverflow.com/questions/24666515/how-do-i-make-an-attributed-string-using-swift
-    func render(into image: CIImage, withExtent extent: CGRect) -> CIImage {
+    private func createTextImage() -> CIImage? {
+        // https://stackoverflow.com/questions/24666515/how-do-i-make-an-attributed-string-using-swift
         // create text image
         let filter = CIFilter.attributedTextImageGenerator()
-        var attributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor: color.attributedColor,
-            NSAttributedString.Key.font: font,
-        ]
+        var attributes = [NSAttributedString.Key: Any]()
+        attributes[NSAttributedString.Key.foregroundColor] =  color.attributedColor
+        if let font = self.font {
+            attributes[NSAttributedString.Key.font] = font
+        }
         if underline {
             attributes[NSAttributedString.Key.underlineStyle] = NSUnderlineStyle.single.rawValue
         }
         let attributedText = NSAttributedString(string: text, attributes: attributes)
         filter.text = attributedText
         filter.scaleFactor = 1.0
-        let textImage = filter.outputImage!
+        return filter.outputImage
+    }
+    
+    func render(into baseImage: CIImage, withExtent extent: CGRect) -> CIImage {
+        guard let imageToRender = createTextImage() else {
+            // TODO: Log warning
+            return baseImage
+        }
         
-        //https://stackoverflow.com/questions/8275882/one-step-affine-transform-for-rotation-around-a-point 
-        // compute position
-        let textImageExtent = textImage.extent
-        let position = CGPoint(x: position.x * extent.width - textImageExtent.width * 0.5, y: (1.0 - position.y) * extent.height - textImageExtent.height * 0.5)
-        let a = rotationAngle / 180.0 * Double.pi
-        //let x = textImageExtent.height * 0.5
-        //let y = textImageExtent.width * 0.5
-        //let transform = CGAffineTransform(cos(a), sin(a),-sin(a),cos(a),x-x*cos(a)+y*sin(a),y-x*sin(a)-y*cos(a))
-            //.translatedBy(x: position.x * extent.width, y: (1.0 - position.y) * extent.height)
-        //let transform = CGAffineTransform(translationX: -x, y: -y)
-          //  .rotated(by: a)
-            //.translatedBy(x: position.x * extent.width, y: (1.0 - position.y) * extent.height)
-        //let positionedTextImage = textImage.transformed(by: transform)
-        let positionedTextImage = textImage.transformed(by: CGAffineTransform(translationX: position.x, y: position.y).rotated(by: a))
-        
-        // rotation
-        //let rotatedTextImage = positionedTextImage.transformed(by: CGAffineTransform(rotationAngle: rotationAngle / Double.pi))
-        //let rotatedTextImage = textImage.transformed(by: CGAffineTransform(rotationAngle: 0.1).)
-        
-        // combine images
-        return positionedTextImage.composited(over: image)
+        return render(imageToRender,
+                      over: baseImage,
+                      scaling: CGPoint(x: 1.0, y: 1.0),
+                      rotating: rotationAngle,
+                      positionedAt: position)
     }
 }
 
 extension ImageFileElement : Renderable {
-    func render(into image: CIImage, withExtent extent: CGRect) -> CIImage {
+    func render(into baseImage: CIImage, withExtent extent: CGRect) -> CIImage {
         guard let imageToRender = ImageCache.shared.getImage(of: imageId) else {
-            return image
+            // TODO: Log warning
+            return baseImage
         }
         
-        let cgImageToRender = CIImage(cgImage: imageToRender)
-        let renderImageExtent = cgImageToRender.extent
-        return cgImageToRender
-            .transformed(by: CGAffineTransform(translationX: renderImageExtent.width * -0.5, y: renderImageExtent.height * -0.5))
-            .transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
-            .transformed(by: CGAffineTransform(rotationAngle: rotationAngle / 180.0 * Double.pi))
-            .transformed(by: CGAffineTransform(translationX: extent.width * position.x, y: extent.height * (1.0 - position.y)))
-            .composited(over: image)
+        return render(CIImage(cgImage: imageToRender), 
+                      over: baseImage,
+                      scaling: CGPoint(x: scaleX, y: scaleY),
+                      rotating: rotationAngle,
+                      positionedAt: position)
     }
 }

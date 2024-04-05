@@ -53,10 +53,10 @@ extension AppStoreProject {
             images: [
                 AppStoreImage(
                     id: UUID(),
-                    background: BackgroundColor(color: Color(green: 1)), 
+                    background: BackgroundColor(color: Color(green: 1, blue: 0.5)),
                     elements: [
-                        TextElement(color: Color(blue: 1.0), fontName: "Helvetica", fontSize: 36, text: "This is a first test!", position: CGPoint(x: 0.5, y: 0.1), underline: true, rotationAngle: 0.0),
-                        ImageFileElement(imageId: id1, scaleX: 0.2, scaleY: 0.2, position: CGPoint(x: 0.5, y: 0.65), rotationAngle: -10),
+                        TextElement(color: Color(blue: 1.0), fontName: "Helvetica Neue", fontSize: 36, text: "This is a first test!", position: CGPoint(x: 0.5, y: 0.15), underline: false, rotationAngle: 7.0),
+                        ImageFileElement(imageId: id1, scaleX: 0.2, scaleY: 0.2, position: CGPoint(x: 0.3, y: 0.65), rotationAngle: -10),
                     ]
                 )
             ],
