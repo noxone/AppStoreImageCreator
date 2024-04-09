@@ -14,6 +14,7 @@ import AppKit
 #else
 import UIKit
 #endif
+import SwiftImageReadWrite // TODO: remove this
 
 #if os(macOS)
 typealias PlatformFont = NSFont
@@ -28,20 +29,20 @@ protocol Renderable {
 }
 
 fileprivate protocol ImageCreator : Renderable {
-    var scale: CGPoint { get }
+    var scale: CGSize { get }
     var rotationAngle: CGFloat { get }
     var position: CGPoint { get }
     func createImage(withExtent extent: CGRect) -> CIImage?
 }
 
 extension Renderable {
-    fileprivate func render(_ imageToRender: CIImage, over baseImage: CIImage, scaling scale: CGPoint, rotating rotationAngle: CGFloat, positionedAt position: CGPoint) -> CIImage {
+    fileprivate func render(_ imageToRender: CIImage, over baseImage: CIImage, scaling scale: CGSize, rotating rotationAngle: CGFloat, positionedAt position: CGPoint) -> CIImage {
         let imageToRenderExtent = imageToRender.extent
         let baseImageExtent = baseImage.extent
         
         return imageToRender
             .transformed(by: CGAffineTransform(translationX: imageToRenderExtent.width * -0.5, y: imageToRenderExtent.height * -0.5))
-            .transformed(by: CGAffineTransform(scaleX: scale.x, y: scale.y))
+            .transformed(by: CGAffineTransform(scaleX: scale.width, y: scale.height))
             .transformed(by: CGAffineTransform(rotationAngle: rotationAngle / 180.0 * Double.pi))
             .transformed(by: CGAffineTransform(translationX: baseImageExtent.width * position.x, y: baseImageExtent.height * (1.0 - position.y)))
             .composited(over: baseImage)
@@ -49,7 +50,7 @@ extension Renderable {
 }
 
 extension ImageCreator {
-    var scale: CGPoint { CGPoint(x: 1.0, y: 1.0) }
+    var scale: CGSize { CGSize(width: 1.0, height: 1.0) }
     var rotationAngle: CGFloat { 0.0 }
     var position: CGPoint { CGPoint(x: 0, y: 0) }
 
@@ -178,6 +179,31 @@ extension TextElement : ImageCreator {
 
 extension ImageFileElement : ImageCreator {
     func createImage(withExtent extent: CGRect) -> CIImage? {
-        return ImageCache.shared.getImage(of: imageId)?.ciImage
+        return ImageCache.shared.get(image: imageId)?.ciImage
+    }
+}
+
+extension ScreenshotElement : ImageCreator {
+    func createImage(withExtent extent: CGRect) -> CIImage? {
+        var image = CIImage(color: CIColor(red: 1, green: 1, blue: 1, alpha: 0))
+            .cropped(to: extent)
+        
+        if let screenshotImage = CGImage.named("test-screenshot-ipad")?.ciImage {
+            image = screenshotImage
+        }
+        
+        if let bezel,
+            let bezelCGImage = ImageCache.shared.get(bezel: bezel) {
+            
+            let bezelCIImage = bezelCGImage.ciImage
+            let bezelExtent = bezelCIImage.extent
+            let translation = CGPoint(x: (extent.width - bezelExtent.width) * 0.5, y: (extent.height - bezelExtent.height) * 0.5)
+            
+            image = bezelCIImage
+                .transformed(by: CGAffineTransform(translationX: translation.x, y: translation.y))
+                .composited(over: image)
+        }
+        
+        return image
     }
 }

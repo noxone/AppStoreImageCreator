@@ -40,7 +40,23 @@ struct TextElement {
 
 struct ImageFileElement {
     let imageId: ImageFileId
-    let scale: CGPoint
+    let scale: CGSize
     let position: CGPoint
     let rotationAngle: CGFloat
+}
+
+struct ScreenshotElement {
+    let screenshot: ScreenshotId
+    let bezel: Bezel?
+    let imageScale: ImageScale
+    let scale: CGSize
+    let position: CGPoint
+    let rotationAngle: CGFloat
+}
+
+enum ImageScale {
+    case fit
+    case fill
+    case crop
+    case scale
 }

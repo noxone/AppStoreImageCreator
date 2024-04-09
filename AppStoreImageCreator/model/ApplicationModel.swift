@@ -15,10 +15,19 @@ class ApplicationModel : ObservableObject {
     init() {
         self.project = AppStoreProject.createNewProject()
         loadImage(imagefile: project.imagesFiles[0])
+        loadBezels()
     }
     
     private func set(project: AppStoreProject) {
         self.project = project
+    }
+    
+    private func loadBezels() {
+        for bezel in Bezel.allCases {
+            if let bezelImage = bezel.image {
+                ImageCache.shared.put(bezel: bezelImage, withId: bezel)
+            }
+        }
     }
     
     func set(background: Background & Renderable) {
@@ -27,7 +36,7 @@ class ApplicationModel : ObservableObject {
     func loadImage(imagefile: ImageFile) {
         let id = imagefile.id
         if let image = LoadedImage(withId: id, named: imagefile.originalFilename!) {
-            ImageCache.shared.putImage(image.cgImage, withId: id)
+            ImageCache.shared.put(image: image.cgImage, withId: id)
         }
     }
     

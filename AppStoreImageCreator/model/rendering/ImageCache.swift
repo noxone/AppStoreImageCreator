@@ -35,12 +35,32 @@ class ImageCache {
     
     private var imageFiles = [ImageFileId: CGImage]()
     
-    func putImage(_ image: CGImage, withId id: ImageFileId) {
+    func put(image: CGImage, withId id: ImageFileId) {
         imageFiles[id] = image
     }
     
-    func getImage(of id: ImageFileId) -> CGImage? {
+    func get(image id: ImageFileId) -> CGImage? {
         return imageFiles[id]
+    }
+    
+    private var screenshots = [ScreenshotId: CGImage]()
+    
+    func put(screenshot image: CGImage, withId id: ScreenshotId) {
+        screenshots[id] = image
+    }
+    
+    func get(screenshot id: ScreenshotId) -> CGImage? {
+        return screenshots[id]
+    }
+    
+    private var bezels = [Bezel: CGImage]()
+    
+    func put(bezel image: CGImage, withId id: Bezel) {
+        bezels[id] = image
+    }
+    
+    func get(bezel id: Bezel) -> CGImage? {
+        return bezels[id]
     }
 }
 

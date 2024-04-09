@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import CoreGraphics
+import SwiftImageReadWrite
 
-enum AppStoreDevice {
+enum AppStoreDevice : String, Hashable {
     case iPhone6_7
     case iPhone6_5
     case iPhone6_1
@@ -56,22 +58,52 @@ enum AppStoreDevice {
         return CGRect(x: 0, y: 0, width: size.width, height: size.height)
     }
     
-    var bezelResourceNames: [String] {
+    var bezelResourceNames: [Bezel] {
         switch self {
             case .iPhone6_7:
                 return [
-                    "bezel_iPhone_15_Black",
-                    "bezel_iPhone_15_Blue",
-                    "bezel_iPhone_15_Green",
-                    "bezel_iPhone_15_Pink",
-                    "bezel_iPhone_15_Yellow",
-                    "bezel_iPhone_15_Pro_Black",
-                    "bezel_iPhone_15_Pro_Blue",
-                    "bezel_iPhone_15_Pro_Nature",
-                    "bezel_iPhone_15_Pro_White"
+                    .iPhone_15_Blue,
+                    .iPhone_15_Pink,
+                    .iPhone_15_Black,
+                    .iPhone_15_Green,
+                    .iPhone_15_Yellow,
+                    .iPhone_15_Pro_Blue,
+                    .iPhone_15_Pro_Black,
+                    .iPhone_15_Pro_White,
+                    .iPhone_15_Pro_Natural,
+                ]
+            case .iPadPro11_0:
+                return [
+                    .iPad_Pro_11
                 ]
             default:
-                return ["bezel_iPhone_15_Pink"]
+                return [.iPhone_15_Pink]
         }
     }
 }
+
+enum Bezel : String, Hashable, CaseIterable {
+    case iPad_Air
+    case iPad_mini
+    case iPad_Pro_11
+    case iPad_Pro_12_9
+    case iPad
+    case iPhone_15_Black
+    case iPhone_15_Blue
+    case iPhone_15_Green
+    case iPhone_15_Pink
+    case iPhone_15_Yellow
+    case iPhone_15_Pro_Black
+    case iPhone_15_Pro_Blue
+    case iPhone_15_Pro_Natural
+    case iPhone_15_Pro_White
+    
+    private var assetName: String {
+        return "bezel_\(rawValue)"
+    }
+    
+    var image: CGImage? {
+        return CGImage.named(assetName)
+    }
+}
+
