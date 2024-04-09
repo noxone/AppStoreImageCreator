@@ -32,7 +32,7 @@ class ApplicationModel : ObservableObject {
     }
     
     var currentImage: CGImage? {
-        ImageCache.shared.getImage(of: project.images[0], for: .iPhone16_1)
+        ImageCache.shared.getImage(of: project.images[0], for: project.activeDevices.first!)
     }
 }
 

@@ -16,6 +16,18 @@ struct BackgroundXfPattern : Background {
     let symbol: String
 }
 
+struct SimpleLinearGradient : Background {
+    let rotationAngle: CGFloat
+    let color0: Color
+    let color1: Color
+}
+
+struct LinearGradient : Background {
+    let rotationAngle: CGFloat
+    let colors: [Color]
+    let stops: [CGFloat]
+}
+
 struct TextElement {
     let color: Color
     let fontName: String
@@ -28,8 +40,7 @@ struct TextElement {
 
 struct ImageFileElement {
     let imageId: ImageFileId
-    let scaleX: CGFloat
-    let scaleY: CGFloat
+    let scale: CGPoint
     let position: CGPoint
     let rotationAngle: CGFloat
 }

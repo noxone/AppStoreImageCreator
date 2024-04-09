@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Device : String, Equatable, Hashable {
+enum AppleDevice : String, Equatable, Hashable {
     case iPhone1_1 // iPhone
     case iPhone1_2 // iPhone 3G
     case iPhone2_1 // iPhone 3GS

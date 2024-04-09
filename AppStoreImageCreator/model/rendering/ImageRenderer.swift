@@ -13,11 +13,12 @@ import CoreGraphics
 extension AppStoreImage {
     private static let context = CIContext()
     
-    func render(for device: Device) -> CGImage? {
+    func render(for appStoreDevice: AppStoreDevice) -> CGImage? {
         let context = AppStoreImage.context
-        let extent = device.bounds
+        let extent = appStoreDevice.extent
         
         var image = CIImage(color: .black)
+            .cropped(to: extent)
         
         // apply background
         image = background.render(into: image, withExtent: extent)
@@ -27,7 +28,7 @@ extension AppStoreImage {
             image = element.render(into: image, withExtent: extent)
         }
         
-        let outputImage = context.createCGImage(image, from: device.bounds)
+        let outputImage = context.createCGImage(image, from: appStoreDevice.extent)
         return outputImage
     }
 }

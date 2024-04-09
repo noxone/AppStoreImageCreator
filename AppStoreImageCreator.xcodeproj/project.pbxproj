@@ -20,10 +20,11 @@
 		C5C2D1E12BBB3B4E00E13BC2 /* SwiftUI+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1E02BBB3B4E00E13BC2 /* SwiftUI+CGImage.swift */; };
 		C5C2D1E32BBBEE8900E13BC2 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1E22BBBEE8900E13BC2 /* ApplicationModel.swift */; };
 		C5C2D1E62BBC001D00E13BC2 /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1E52BBC001D00E13BC2 /* Elements.swift */; };
+		C5C2D1E92BC2A9C500E13BC2 /* AppStoreDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C2D1E82BC2A9C500E13BC2 /* AppStoreDevice.swift */; };
 		C5C4A6CB2BB8761500AAB9B0 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6CA2BB8761500AAB9B0 /* ProjectModel.swift */; };
 		C5C4A6CD2BB8767400AAB9B0 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6CC2BB8767400AAB9B0 /* Graphics.swift */; };
 		C5C4A6D02BB8797D00AAB9B0 /* ImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6CF2BB8797D00AAB9B0 /* ImageRenderer.swift */; };
-		C5C4A6D22BB8799D00AAB9B0 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6D12BB8799D00AAB9B0 /* Device.swift */; };
+		C5C4A6D22BB8799D00AAB9B0 /* AppleDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6D12BB8799D00AAB9B0 /* AppleDevice.swift */; };
 		C5C4A6D42BB89EFB00AAB9B0 /* ImageRendererTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4A6D32BB89EFB00AAB9B0 /* ImageRendererTest.swift */; };
 		C5C4A6DA2BB8A27700AAB9B0 /* SwiftImageReadWrite in Frameworks */ = {isa = PBXBuildFile; productRef = C5C4A6D92BB8A27700AAB9B0 /* SwiftImageReadWrite */; };
 		C5C4A6DC2BB93B8100AAB9B0 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C4A6DB2BB93B8100AAB9B0 /* TestAssets.xcassets */; };
@@ -64,10 +65,11 @@
 		C5C2D1E02BBB3B4E00E13BC2 /* SwiftUI+CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+CGImage.swift"; sourceTree = "<group>"; };
 		C5C2D1E22BBBEE8900E13BC2 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
 		C5C2D1E52BBC001D00E13BC2 /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
+		C5C2D1E82BC2A9C500E13BC2 /* AppStoreDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreDevice.swift; sourceTree = "<group>"; };
 		C5C4A6CA2BB8761500AAB9B0 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		C5C4A6CC2BB8767400AAB9B0 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
 		C5C4A6CF2BB8797D00AAB9B0 /* ImageRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderer.swift; sourceTree = "<group>"; };
-		C5C4A6D12BB8799D00AAB9B0 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		C5C4A6D12BB8799D00AAB9B0 /* AppleDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleDevice.swift; sourceTree = "<group>"; };
 		C5C4A6D32BB89EFB00AAB9B0 /* ImageRendererTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRendererTest.swift; sourceTree = "<group>"; };
 		C5C4A6DB2BB93B8100AAB9B0 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,7 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				C5C4A6CA2BB8761500AAB9B0 /* ProjectModel.swift */,
-				C5C4A6D12BB8799D00AAB9B0 /* Device.swift */,
+				C5C4A6D12BB8799D00AAB9B0 /* AppleDevice.swift */,
+				C5C2D1E82BC2A9C500E13BC2 /* AppStoreDevice.swift */,
 			);
 			path = project;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C515A7B62BB971A90007630E /* TestView.swift in Sources */,
+				C5C2D1E92BC2A9C500E13BC2 /* AppStoreDevice.swift in Sources */,
 				C54D80062BB875DD00D5DEB0 /* ContentView.swift in Sources */,
 				C5C2D1E62BBC001D00E13BC2 /* Elements.swift in Sources */,
 				C5C2D1DD2BB9D97300E13BC2 /* ImageCache.swift in Sources */,
@@ -355,7 +359,7 @@
 				C5C2D1E32BBBEE8900E13BC2 /* ApplicationModel.swift in Sources */,
 				C5C4A6CB2BB8761500AAB9B0 /* ProjectModel.swift in Sources */,
 				C5C4A6D02BB8797D00AAB9B0 /* ImageRenderer.swift in Sources */,
-				C5C4A6D22BB8799D00AAB9B0 /* Device.swift in Sources */,
+				C5C4A6D22BB8799D00AAB9B0 /* AppleDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

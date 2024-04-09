@@ -23,7 +23,7 @@ final class ImageRendererTest: XCTestCase {
 
     func testSimpleBackgroundImage() throws {
         let asi = AppStoreImage(id: UUID(), background: BackgroundColor(color: Color(red: 1)), elements: [])
-        let image = asi.render(for: .dummy)
+        let image = asi.render(for: .iPad10_5)
         XCTAssertNotNil(image)
         
     //    try assert(image: image!, isSameAs: "test-1000x1000-red")

@@ -16,15 +16,15 @@ class ImageCache {
     
     private init() {}
     
-    func getImage(of appStoreImage: AppStoreImage, for device: Device) -> CGImage? {
-        let cacheKey = CacheKey(imageId: appStoreImage.id, device: device)
+    func getImage(of appStoreImage: AppStoreImage, for appStoreDevice: AppStoreDevice) -> CGImage? {
+        let cacheKey = CacheKey(imageId: appStoreImage.id, appStoreDevice: appStoreDevice)
         let currentInstanceId = appStoreImage.instanceId
         
         if let lastInstanceId = imageToId[cacheKey], lastInstanceId == currentInstanceId, let rendering = imageToRendering[cacheKey] {
             return rendering
         }
         
-        if let image = appStoreImage.render(for: device) {
+        if let image = appStoreImage.render(for: appStoreDevice) {
             imageToId[cacheKey] = currentInstanceId
             imageToRendering[cacheKey] = image
             return image
@@ -46,5 +46,5 @@ class ImageCache {
 
 fileprivate struct CacheKey : Equatable, Hashable {
     let imageId: UUID
-    let device: Device
+    let appStoreDevice: AppStoreDevice
 }

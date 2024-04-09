@@ -16,7 +16,7 @@ struct AppStoreProject {
     let name: String
     let background: Renderable & Background
     let images: [AppStoreImage]
-    let activeDevices: [Device]
+    let activeDevices: [AppStoreDevice]
     let imagesFiles: [ImageFile]
     let screenshots: [Screenshot]
 }
@@ -31,7 +31,7 @@ struct AppStoreImage {
 
 struct Screenshot {
     let id: ScreenshotId
-    let images: [Device:ImageFileId]
+    let images: [AppStoreDevice:ImageFileId]
 }
 
 struct ImageFile {
@@ -53,14 +53,16 @@ extension AppStoreProject {
             images: [
                 AppStoreImage(
                     id: UUID(),
-                    background: BackgroundColor(color: Color(green: 1, blue: 0.5)),
+                    //background: BackgroundColor(color: Color(red: 0.7, green: 0.5)),
+                    //background: LinearGradient(rotationAngle: 10, colors: [Color(green: 0), Color(red:1.0), Color(blue: 1.0)], stops: [0.19, 0.29, 1.0]),
+                    background: SimpleLinearGradient(rotationAngle: -25, color0: Color(green: 1), color1: Color(red:1.0)),
                     elements: [
-                        TextElement(color: Color(blue: 1.0), fontName: "Helvetica Neue", fontSize: 36, text: "This is a first test!", position: CGPoint(x: 0.5, y: 0.15), underline: false, rotationAngle: 7.0),
-                        ImageFileElement(imageId: id1, scaleX: 0.2, scaleY: 0.2, position: CGPoint(x: 0.3, y: 0.65), rotationAngle: -10),
+                        TextElement(color: Color(blue: 1.0), fontName: "Helvetica Neue", fontSize: 36, text: "This is a first test!", position: CGPoint(x: 0.6, y: 0.15), underline: false, rotationAngle: 7.0),
+                        ImageFileElement(imageId: id1, scale: CGPoint(x: 0.2, y: 0.2), position: CGPoint(x: 0.3, y: 0.65), rotationAngle: -10),
                     ]
                 )
             ],
-            activeDevices: [.iPhone16_2],
+            activeDevices: [.iPadPro11_0, .iPhone6_7],
             imagesFiles: [
                 ImageFile(id: id1, originalFilename: "test-lightscape")
             ],

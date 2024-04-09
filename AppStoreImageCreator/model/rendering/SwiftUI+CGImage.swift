@@ -25,6 +25,12 @@ extension Image {
     }
 }
 
+extension CGImage {
+    var ciImage: CIImage {
+        CIImage(cgImage: self)
+    }
+}
+
 extension Color {
 #if os(macOS)
     var attributedColor: NSColor { NSColor(ciColor: ciColor) }
