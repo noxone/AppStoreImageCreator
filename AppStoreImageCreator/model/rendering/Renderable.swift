@@ -185,7 +185,7 @@ extension ImageFileElement : ImageCreator {
 
 extension ScreenshotElement : ImageCreator {
     func createImage(withExtent extent: CGRect) -> CIImage? {
-        var image = CIImage(color: CIColor(red: 1, green: 1, blue: 1, alpha: 0))
+        var image = CIImage(color: CIColor.transparent)
             .cropped(to: extent)
         
         if let screenshotImage = CGImage.named("test-screenshot-ipad")?.ciImage {

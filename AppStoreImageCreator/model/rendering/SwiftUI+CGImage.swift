@@ -38,3 +38,7 @@ extension Color {
     var attributedColor: UIColor { UIColor(cgColor: cgColor) }
 #endif
 }
+
+extension CIColor {
+    static let transparent = CIColor(red: 1, green: 1, blue: 1, alpha: 0)
+}
