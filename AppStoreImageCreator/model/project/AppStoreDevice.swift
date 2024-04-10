@@ -9,7 +9,7 @@ import Foundation
 import CoreGraphics
 import SwiftImageReadWrite
 
-enum AppStoreDevice : String, Hashable {
+enum AppStoreDevice : String, Hashable, Identifiable {
     case iPhone6_7
     case iPhone6_5
     case iPhone6_1
@@ -23,6 +23,8 @@ enum AppStoreDevice : String, Hashable {
     case iPadCorner12_9
     case iPad10_5
     case iPad9_7
+    
+    var id: String { rawValue }
     
     var screenshotSize: [CGSize] {
         switch self {

@@ -10,15 +10,8 @@ import SwiftImageReadWrite
 
 struct ProjectImageDeviceView: View {
     @EnvironmentObject private var model: ApplicationModel
-    var appStoreImageIndex: Int
-    var appStoreDeviceIndex: Int
-    
-    private var appStoreImage: AppStoreImage {
-        model.project.images[appStoreImageIndex]
-    }
-    private var appStoreDevice: AppStoreDevice {
-        model.project.activeDevices[appStoreDeviceIndex]
-    }
+    var appStoreDevice: AppStoreDevice
+    var appStoreImage: AppStoreImage
     
     private var cgImage: CGImage {
         try! ImageCache.shared.getImage(of: appStoreImage, for: appStoreDevice)
@@ -43,11 +36,11 @@ struct ProjectImageDeviceView: View {
 
 #Preview {
     VStack {
-        ProjectImageDeviceView(appStoreImageIndex: 0, appStoreDeviceIndex: 0)
-            .environmentObject(ApplicationModel())
-            .frame(width: 300, height: 300)
-        ProjectImageDeviceView(appStoreImageIndex: 0, appStoreDeviceIndex: 1)
-            .environmentObject(ApplicationModel())
-            .frame(width: 300, height: 400)
+        let model = ApplicationModel()
+        ForEach(model.project.activeDevices) { device in
+            ProjectImageDeviceView(appStoreDevice: device, appStoreImage: model.project.images[0])
+                .environmentObject(model)
+                .frame(width: 300, height: 300)
+        }
     }
 }

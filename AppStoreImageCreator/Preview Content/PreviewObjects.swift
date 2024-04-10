@@ -32,6 +32,15 @@ extension AppStoreProject {
                         ImageFileElement(imageId: id1, scale: CGSize(width: 0.2, height: 0.2), position: CGPoint(x: 0.3, y: 0.65), rotationAngle: -15),
                         ScreenshotElement(screenshot: id1, bezel: .iPad_Pro_11, imageScale: .scale, scale: CGSize(width: 0.5, height: 0.5), position: CGPoint(x: 0.7, y: 0.45), rotationAngle: 10),
                     ]
+                ),
+                AppStoreImage(
+                    id: UUID(),
+                    background: BackgroundColor(color: Color(red: 0.7, green: 0.5)),
+                    elements: [
+                        TextElement(color: Color(blue: 1.0), fontName: "Times New Roman", fontSize: 36, text: "Second image!", position: CGPoint(x: 0.2, y: 0.1), underline: true, rotationAngle: -2),
+                        ImageFileElement(imageId: id1, scale: CGSize(width: 0.2, height: 0.2), position: CGPoint(x: 0.3, y: 0.75), rotationAngle: -25),
+                        ScreenshotElement(screenshot: id1, bezel: .iPad_Pro_11, imageScale: .scale, scale: CGSize(width: 0.5, height: 0.5), position: CGPoint(x: 0.7, y: 0.45), rotationAngle: 10),
+                    ]
                 )
             ],
             activeDevices: [.iPadPro11_0, .iPhone6_7, ],

@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct ProjectImagesView: View {
+    @EnvironmentObject private var model: ApplicationModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Moin")
     }
 }
 
 #Preview {
-    ProjectImagesView()
+    VStack {
+        let model = ApplicationModel()
+        ProjectImagesView()
+            .environmentObject(model)
+    }
 }

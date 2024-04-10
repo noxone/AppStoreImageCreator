@@ -21,12 +21,21 @@ struct AppStoreProject {
     let screenshots: [Screenshot]
 }
 
-struct AppStoreImage {
+struct AppStoreImage : Hashable, Equatable, Identifiable {
+    static func == (lhs: AppStoreImage, rhs: AppStoreImage) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     private static var currentId = 0
+    
     let instanceId: AppStoreImageId = { currentId += 1; return currentId }()
     let id: UUID
     let background: Renderable & Background
     let elements: [Renderable]
+    
+    func hash(into hasher: inout Hasher) {
+        id.hash(into: &hasher)
+    }
 }
 
 struct Screenshot {

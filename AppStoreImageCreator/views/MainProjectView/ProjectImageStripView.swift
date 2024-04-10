@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct ProjectImageStripView: View {
+    @EnvironmentObject private var model: ApplicationModel
+    var appStoreDevice: AppStoreDevice
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView([.horizontal, .vertical]) {
+            HStack {
+                ForEach(model.project.images) { image in
+                    ProjectImageDeviceView(appStoreDevice: appStoreDevice, appStoreImage: image)
+                }
+            }.frame(width: 2000, height: 1000)
+        }.frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
-    ProjectImageStripView()
+    VStack {
+        let model = ApplicationModel()
+        ForEach(model.project.activeDevices) { device in
+            ProjectImageStripView(appStoreDevice: device)
+        }
+        .environmentObject(model)
+    }
 }
