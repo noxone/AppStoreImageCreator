@@ -11,7 +11,13 @@ struct ProjectImagesView: View {
     @EnvironmentObject private var model: ApplicationModel
 
     var body: some View {
-        Text("Moin")
+        ScrollView([.horizontal, .vertical]) {
+            VStack {
+                ForEach(model.project.activeDevices) { device in
+                    DeviceImageStripView(appStoreDevice: device, width: 300)
+                }
+            }
+        }
     }
 }
 

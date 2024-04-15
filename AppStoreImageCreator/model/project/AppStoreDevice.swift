@@ -55,8 +55,15 @@ enum AppStoreDevice : String, Hashable, Identifiable {
         }
     }
     
+    private var mainScreenshotSize: CGSize { screenshotSize.first! }
+    
+    var ratio: CGFloat {
+        let size = mainScreenshotSize
+        return size.height / size.width
+    }
+
     var extent: CGRect {
-        let size = screenshotSize.first!
+        let size = mainScreenshotSize
         return CGRect(x: 0, y: 0, width: size.width, height: size.height)
     }
     
